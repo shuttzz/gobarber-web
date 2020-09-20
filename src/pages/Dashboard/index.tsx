@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { isToday, format, parseISO, isAfter } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import DayPicker, { DayModifiers } from 'react-day-picker';
@@ -33,7 +34,7 @@ interface Appointment {
   hourFormatted: string;
   user: {
     id: string;
-    avatar_url: string;
+    avatarUrl: string;
     name: string;
   };
 }
@@ -135,10 +136,12 @@ const Dashboard: React.FC = () => {
           <img src={logoimg} alt="GoBarber" />
 
           <Profile>
-            <img src={user.avatar_url} alt={user.name} />
+            <img src={user.avatarUrl} alt={user.name} />
             <div>
               <span>Bem-vindo,</span>
-              <strong>{user.name}</strong>
+              <Link to="/profile">
+                <strong>{user.name}</strong>
+              </Link>
             </div>
           </Profile>
 
@@ -162,7 +165,7 @@ const Dashboard: React.FC = () => {
               <strong>Agendamento a seguir</strong>
               <div>
                 <img
-                  src={nextAppointment.user.avatar_url}
+                  src={nextAppointment.user.avatarUrl}
                   alt={nextAppointment.user.name}
                 />
 
@@ -191,7 +194,7 @@ const Dashboard: React.FC = () => {
 
                 <div>
                   <img
-                    src={appointment.user.avatar_url}
+                    src={appointment.user.avatarUrl}
                     alt={appointment.user.name}
                   />
 
@@ -217,7 +220,7 @@ const Dashboard: React.FC = () => {
 
                 <div>
                   <img
-                    src={appointment.user.avatar_url}
+                    src={appointment.user.avatarUrl}
                     alt={appointment.user.name}
                   />
 
